@@ -1,0 +1,28 @@
+- name: getting links from jenkins.io
+  get_url:
+    url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+
+- name: getting 2nd link from jenkins.io
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+- name: update links
+  action: yum name="*" state=latest
+
+- name: install java
+  command: sudo amazon-linux-extras install java-openjdk11 -y
+
+- name: install jenkins
+  action: yum name=jenkins state=present
+
+- name: import systemd
+  ansible.builtin.systemd:
+    deamon_reload: yes
+
+- name: restart jenkins
+  ansible.builtin.systemd:
+    name: jenkins
+    state: restarted
+

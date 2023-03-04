@@ -1,0 +1,13 @@
+- name: installing git
+  command: yum install git -y
+
+- name: installing httpd
+  command: yum install httpd -y
+
+- name: restarting httpd
+  command: systemctl restart httpd
+
+- name: getting repo from github
+  git:
+    repo: 'https://github.com/ujnvdprasad/checkoutformdeployment.git'
+    dest: '/var/www/html/'

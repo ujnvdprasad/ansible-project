@@ -1,0 +1,7 @@
+- name: install apache server for debian family
+  command: apt-get-y install docker
+  when: ansible_os_family== "Debian"
+
+- name: install apache server for redhat family
+  command: yum install httpd -y
+  when: ansible_os_family== "RedHat"

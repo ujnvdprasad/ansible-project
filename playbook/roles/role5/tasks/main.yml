@@ -1,0 +1,7 @@
+- name: Installing Numpy python library using pip module
+  pip:
+    name: NumPy
+
+- name: Installing pandas python library using pip module
+  pip:
+    name: pandas
