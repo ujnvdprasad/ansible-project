@@ -19,7 +19,7 @@
 
 - name: import systemd
   ansible.builtin.systemd:
-    deamon_reload: yes
+    daemon_reload: yes
 
 - name: restart jenkins
   ansible.builtin.systemd:
